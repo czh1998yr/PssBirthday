@@ -1,55 +1,132 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <title>潘思思生日快乐</title>
-    <link rel="shortcut icon" href="effect.png" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>做好准备了吗？</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        border: none;
+      }
+      .container {
+        height: 100vh;
+        background-color: #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .submit {
+        height: 300px;
+        width: 300px;
+        text-align: center;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
+      /* From www.lingdaima.com */
+      button {
+        position: relative;
+        padding: 19px 36px;
+        display: block;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        border-radius: 40px;
+        border: none;
+      }
+
+      button span {
+        position: relative;
+        color: #fff;
+        font-family: Arial;
+        letter-spacing: 8px;
+        z-index: 1;
+      }
+
+      button .liquid {
+        position: absolute;
+        top: -80px;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        background: #4973ff;
+        box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+        transition: 0.5s;
+      }
+
+      button .liquid::after,
+      button .liquid::before {
+        content: "";
+        width: 200%;
+        height: 200%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -75%);
+        background: #fff;
+      }
+
+      button .liquid::before {
+        border-radius: 45%;
+        background: rgba(20, 20, 20, 1);
+        animation: animate 5s linear infinite;
+      }
+
+      button .liquid::after {
+        border-radius: 40%;
+        background: rgba(20, 20, 20, 0.5);
+        animation: animate 10s linear infinite;
+      }
+
+      button:hover .liquid {
+        top: -120px;
+      }
+
+      @keyframes animate {
+        0% {
+          transform: translate(-50%, -75%) rotate(0deg);
+        }
+
+        100% {
+          transform: translate(-50%, -75%) rotate(360deg);
+        }
+      }
+      .text {
+        position: absolute;
+        top: 40%;
+      }
+    </style>
+  </head>
   <body>
-    <style id="styleText"></style>
-    <div id="wrapper">
-      <div class="container">
-        <div class="rose">
-          <div class="stem"></div>
-          <div class="thorns">
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <div class="leaves">
-            <div></div>
-            <div></div>
-          </div>
-          <div class="dead-petals">
-            <div></div>
-            <div></div>
-          </div>
-          <div class="petals">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <div class="dead-petal"></div>
-          <div class="shine"></div>
-        </div>
-        <div class="title">祝潘思思生日快乐</div>
-        <div class="wishes">
-          <div>祝潘思思生日快乐！</div>
-          <div>花花送给你！</div>
-          <div>永远十八岁！</div>
-          <div>暴富暴瘦！</div>
-        </div>
+    <audio
+      autoplay="autoplay"
+      loop="loop"
+      preload="auto"
+      src="./test.mp3"
+      id="audio"
+    ></audio>
+
+    <div class="container">
+      <div class="submit">
+        <div class="text">温馨提示：进入主页后播放背景音乐</div>
+        <button onclick="autoplay()">
+          <span>Go!</span>
+          <div class="liquid"></div>
+        </button>
       </div>
-      <div id="html-text"></div>
     </div>
-    <script src="main.js"></script>
+
+    <script>
+      function autoplay() {
+        let audio = document.querySelector("audio");
+        audio.play();
+        window.location = "./main.html";
+      }
+    </script>
   </body>
 </html>
